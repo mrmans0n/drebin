@@ -1,0 +1,15 @@
+<android.support.v4.view.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.nlopez.drebin.sample.PlacesActivity">
+    <android.support.v4.view.PagerTabStrip
+        android:id="@+id/tab_strip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp" />
+</android.support.v4.view.ViewPager>

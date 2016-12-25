@@ -12,6 +12,7 @@
 bin/
 gen/
 out/
+projectFilesBackup/
 
 # Gradle files
 .gradle/
@@ -38,3 +39,9 @@ captures/
 
 # Keystore files
 *.jks
+
+# Crap
+.DS_Store
+
+# maven central
+gradle.properties

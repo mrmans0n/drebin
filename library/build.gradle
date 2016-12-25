@@ -1,0 +1,110 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+
+version '1.0.0'
+group 'io.nlopez.drebin'
+
+dependencies {
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName version
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+      release {
+          minifyEnabled false
+          proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      }
+    }
+}
+
+android.libraryVariants
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact "build/libs/drebin-${version}.aar"
+            artifactId 'library'
+        }
+    }
+}
+
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
+
+def getProperty(project, property) {
+    return project.hasProperty(property) ? project.property(property) : ""
+}
+
+signing {
+    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: getProperty(project, "sonatypeRepo")) {
+            authentication(userName: getProperty(project, "sonatypeUsername"),
+                    password: getProperty(project, "sonatypePassword"))
+        }
+        snapshotRepository(url: getProperty(project, "sonatypeSnapshotRepo")) {
+            authentication(userName: getProperty(project, "sonatypeUsername"),
+                    password: getProperty(project, "sonatypePassword"))
+        }
+
+        pom.project {
+            name 'Drebin'
+            packaging 'aar'
+            description 'Binder framework for Android RecyclerView'
+            url 'https://github.com/mrmans0n/drebin'
+            artifactId 'library'
+
+            scm {
+                url 'scm:git@github.com:mrmans0n/drebin.git'
+                connection 'scm:git@github.com:mrmans0n/drebin.git'
+                developerConnection 'scm:git@github.com:mrmans0n/drebin.git'
+            }
+
+            licenses {
+                license {
+                    name 'MIT license'
+                    url 'http://www.opensource.org/licenses/mit-license.php'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'mrmans0n'
+                    name 'Nacho Lopez'
+                    email 'nacho@nlopez.io'
+                }
+            }
+        }
+    }
+}
