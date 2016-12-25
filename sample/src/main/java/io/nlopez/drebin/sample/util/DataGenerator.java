@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.inject.Inject;
+
 import io.nlopez.drebin.sample.model.Place;
 import io.nlopez.drebin.sample.model.User;
 
@@ -17,6 +19,11 @@ public class DataGenerator {
   private static final List<String> names = Arrays.asList("Maria", "Pablo", "Nacho", "Concha", "Pepe", "Tiburcio", "Estanislao", "Afrodisio", "Acisclo", "Juan", "John", "Paul", "Kevin", "Anacleto", "Farts", "Falos", "Perry", "Tyler", "Stan", "Kyle", "Eric", "Kenny");
   private static final List<String> lastNames = Arrays.asList("Perez", "Lopez", "Fernandez", "Mason", "Lee", "Who", "Doe", "Vergo", "Cifuentes", "Menchu", "Fuertes", "Funke", "MacGyver", "Trump", "McLovin", "McCool");
   private static final List<String> roles = Arrays.asList("User", "Admin", "VIP");
+
+  @Inject
+  public DataGenerator() {
+
+  }
 
   public static List<User> generateUsers(int n) {
     List<User> result = new ArrayList<>(n);
