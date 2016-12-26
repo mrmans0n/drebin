@@ -3,9 +3,9 @@ Drebin
 
 [![Build Status](https://travis-ci.org/mrmans0n/drebin.svg?branch=master)](https://travis-ci.org/mrmans0n/drebin)
 
-Binder framework for Android RecyclerView. Name comes from the super agent John Drebin, as Drebin is an anagram for Binder.
+Binder framework for Android RecyclerView. Name comes from the Lt. Frank Drebin, as Drebin is an anagram for Binder.
 
-![John Drebin](drebin.gif)
+![Frank Drebin](drebin.gif)
 
 Adding to your project
 ----------------------
