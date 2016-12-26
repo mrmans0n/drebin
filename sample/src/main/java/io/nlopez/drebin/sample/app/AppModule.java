@@ -1,6 +1,4 @@
-// Copyright (c) 2016-present Drebin
-
-package io.nlopez.drebin.sample;
+package io.nlopez.drebin.sample.app;
 
 import android.content.Context;
 

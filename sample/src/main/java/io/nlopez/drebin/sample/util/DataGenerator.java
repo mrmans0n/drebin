@@ -25,7 +25,7 @@ public class DataGenerator {
 
   }
 
-  public static List<User> generateUsers(int n) {
+  public List<User> generateUsers(int n) {
     List<User> result = new ArrayList<>(n);
     for (int i = 0; i < n; i++) {
       String name = names.get(RANDOM.nextInt(names.size()));
@@ -37,7 +37,7 @@ public class DataGenerator {
     return result;
   }
 
-  public static List<Place> generatePlaces(int n) {
+  public List<Place> generatePlaces(int n) {
     List<Place> result = new ArrayList<>(n);
     for (int i = 0; i < n; i++) {
       int length = 5 + RANDOM.nextInt(10);
@@ -52,7 +52,7 @@ public class DataGenerator {
     return result;
   }
 
-  public static List generateMix(int n) {
+  public List generateMix(int n) {
     List<User> users = generateUsers(n);
     List<Place> places = generatePlaces(n);
     List result = new ArrayList(n);

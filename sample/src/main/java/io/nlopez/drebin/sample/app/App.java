@@ -1,8 +1,10 @@
-package io.nlopez.drebin.sample;
+package io.nlopez.drebin.sample.app;
 
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+
+import io.nlopez.drebin.sample.app.DaggerAppComponent;
 
 public class App extends Application {
 
