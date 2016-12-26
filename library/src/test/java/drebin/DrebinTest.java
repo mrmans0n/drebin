@@ -63,7 +63,7 @@ public class DrebinTest {
   public void testStableIdsResolverMakesStableIdsTrue() {
     BinderRecyclerViewAdapter adapter =
             mBuilder.stabledIds(mock(StableIdsResolver.class))
-            .into(mRecyclerView);
+                    .into(mRecyclerView);
     assertThat(adapter.hasStableIds()).isTrue();
   }
 }

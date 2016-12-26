@@ -26,7 +26,7 @@ public class BinderSelectorMapper {
     mEntries.put(modelClass, new Entry(modelClass, binderSelector));
   }
 
-  @NonNull public Binder binderForModel(Object model, BinderEnvironment environment) {
+  @NonNull Binder binderForModel(Object model, BinderEnvironment environment) {
     Entry entry = mEntries.get(model.getClass());
     if (entry == null) {
       throw new IllegalArgumentException("Object " + model + " has no binder registered.");
