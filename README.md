@@ -24,7 +24,7 @@ We have to create Binder classes to let the system know how to render some objec
 Some simple binder example:
 
 ```java
-ublic class UsersBinder implements Binder<LinearLayout, UsersBinder.UserViewHost, User, HasUsersEnvironment> {
+public class UsersBinder implements Binder<LinearLayout, UsersBinder.UserViewHost, User, HasUsersEnvironment> {
 
   private static final ViewFactory<LinearLayout> VIEW_FACTORY = ViewFactory.INFLATE.fromLayout(R.layout.view_user);
 
