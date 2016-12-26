@@ -1,6 +1,7 @@
 package drebin;
 
 import android.content.Context;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -26,10 +27,10 @@ public class Drebin {
   public static class DrebinBuilder {
 
     private final Context mContext;
-    private List mItems;
-    private BinderEnvironment mEnvironment;
-    private BinderSelectorMapper mMapper;
-    private StableIdsResolver mStableIdsResolver;
+    @VisibleForTesting List mItems;
+    @VisibleForTesting BinderEnvironment mEnvironment;
+    @VisibleForTesting BinderSelectorMapper mMapper;
+    @VisibleForTesting StableIdsResolver mStableIdsResolver;
 
     public DrebinBuilder(final Context context) {
       mContext = context;
@@ -62,9 +63,9 @@ public class Drebin {
     }
 
     public BinderRecyclerViewAdapter into(RecyclerView recyclerView) {
-      List items = mItems != null ? mItems : new ArrayList();
-      BinderEnvironment environment = mEnvironment != null ? mEnvironment : BinderEnvironment.EmptyEnvironment.INSTANCE;
-      final BinderRecyclerViewAdapter adapter = new BinderRecyclerViewAdapter(mContext, items, environment, mMapper, mStableIdsResolver);
+      mItems = mItems != null ? mItems : new ArrayList();
+      mEnvironment = mEnvironment != null ? mEnvironment : BinderEnvironment.EmptyEnvironment.INSTANCE;
+      final BinderRecyclerViewAdapter adapter = new BinderRecyclerViewAdapter(mContext, mItems, mEnvironment, mMapper, mStableIdsResolver);
       recyclerView.setAdapter(adapter);
       return adapter;
     }
