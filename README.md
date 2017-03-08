@@ -13,7 +13,7 @@ Adding to your project
 Add this to your dependencies:
 
 ```groovy
-compile 'io.nlopez.drebin:library:1.0.0'
+compile 'io.nlopez.drebin:library:1.0.1'
 ```
 
 Usage
@@ -144,6 +144,10 @@ public class HasContextEnvironment implements BinderEnvironment {
   public Context getContext() { return mContext; }
 }
 ```
+
+There are convenience environments done for you:
+- ClickableEnvironment, for handling onClick events over the row easily.
+- ... more to come :P
 
 Differences with [SmartAdapters](https://github.com/mrmans0n/smart-adapters)
 ------------------------------
